@@ -7,6 +7,8 @@ import { fileURLToPath } from 'url'
 import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
 import { GetPlatformProxyOptions } from 'wrangler'
 import { r2Storage } from '@payloadcms/storage-r2'
+import { ar } from '@payloadcms/translations/languages/ar'
+import { en } from '@payloadcms/translations/languages/en'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -62,6 +64,10 @@ export default buildConfig({
   },
   collections: [Users, Media, Countries, Cities, Hotels, Programs, Articles, Albums, Partners, Testimonials, Redirects],
   globals: [SiteSettings],
+  i18n: {
+    supportedLanguages: { ar, en },
+    fallbackLanguage: 'en',
+  },
   localization: {
     locales: [
       { label: 'العربية', code: 'ar' },

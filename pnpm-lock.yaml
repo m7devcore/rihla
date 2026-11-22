@@ -23,6 +23,9 @@ importers:
       '@payloadcms/storage-r2':
         specifier: 4.0.0-beta.11
         version: 4.0.0-beta.11(@types/react@19.3.0)(monaco-editor@0.57.0)(payload@4.0.0-beta.11(graphql@16.15.0)(supports-color@10.2.2)(typescript@6.0.3))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)(typescript@6.0.3)
+      '@payloadcms/translations':
+        specifier: 4.0.0-beta.11
+        version: 4.0.0-beta.11
       '@payloadcms/ui':
         specifier: 4.0.0-beta.11
         version: 4.0.0-beta.11(@types/react@19.3.0)(monaco-editor@0.57.0)(payload@4.0.0-beta.11(graphql@16.15.0)(supports-color@10.2.2)(typescript@6.0.3))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(supports-color@10.2.2)(typescript@6.0.3)
