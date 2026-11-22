@@ -43,6 +43,14 @@ Setup instructions will be added once the first version of the codebase lands.
 
 Issues and pull requests are welcome once the first version is out. Until then, feel free to open an issue with ideas or questions.
 
+How the project is run, for humans and AI agents:
+
+- [`AGENTS.md`](./AGENTS.md): rules, commands and definition of done
+- [`docs/WORKFLOW.md`](./docs/WORKFLOW.md): the procedure for every task, with review and human gates
+- [`docs/PLAN.md`](./docs/PLAN.md): the four-week delivery plan with task IDs
+- [`docs/STATUS.md`](./docs/STATUS.md): current progress
+- [`docs/design/`](./docs/design/README.md): design reference
+
 ## License
 
 [MIT](./LICENSE)

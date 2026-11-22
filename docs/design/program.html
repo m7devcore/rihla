@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>صفحة البرنامج — سكاي كي للسياحة</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+</style>
+</helmet>
+<div dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;background:#F6F1E7;color:#1B2430;width:100%;overflow:hidden">
+
+<div style="background:#0F2238;color:#F6F1E7">
+<div style="max-width:1280px;margin:0 auto;padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+<a href="Main.dc.html" style="font-family:Amiri,serif;font-size:28px;font-weight:700">سكاي كي <span style="color:#C9A25E">للسياحة</span></a>
+<div style="display:flex;flex-wrap:wrap;gap:28px;font-size:15px"><a href="Destination.dc.html">الوجهات</a><a href="#">البرامج</a><a href="#">للشركات والوكالات</a><a href="#">من نحن</a><a href="#">تواصل معنا</a></div>
+<a href="#" style="border:1px solid #C9A25E;padding:10px 18px;color:#C9A25E;min-height:44px;box-sizing:border-box;display:flex;align-items:center;font-size:14px">English</a>
+</div>
+</div>
+
+<!-- Title block -->
+<div style="background:#0F2238;color:#F6F1E7">
+<div style="max-width:1280px;margin:0 auto;padding:24px 40px 64px">
+<div style="font-size:14px;color:#C3CCD8;margin-bottom:24px"><a href="Main.dc.html">الرئيسية</a> / <a href="#">البرامج</a> / تركيا</div>
+<div style="display:flex;flex-wrap:wrap;gap:16px;margin-bottom:16px"><span style="background:#C9A25E;color:#0F2238;font-size:13px;font-weight:600;padding:6px 12px">اختيار الفريق</span><span style="border:1px solid #C9A25E;color:#C9A25E;font-size:13px;padding:6px 12px">[X] أيام · [Y] ليالٍ</span></div>
+<h1 style="font-family:Amiri,serif;font-size:60px;line-height:1.3;margin:0 0 12px">[عنوان البرنامج]</h1>
+<p style="font-size:18px;color:#D6DCE4;margin:0;max-width:720px;line-height:1.9">[وصف مختصر للبرنامج من سطر إلى سطرين]</p>
+</div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:48px 40px;display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start">
+
+<!-- Main column -->
+<div style="flex:2 1 560px;min-width:0">
+<div style="height:440px;background:#CFC6B2;display:flex;align-items:flex-end;padding:16px;box-sizing:border-box;font-size:13px;color:#3B4452">[ صورة رئيسية للبرنامج ]</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px">
+<div style="height:110px;background:#D9D2C3"></div><div style="height:110px;background:#D9D2C3"></div><div style="height:110px;background:#D9D2C3"></div>
+</div>
+
+<h2 style="font-family:Amiri,serif;font-size:38px;color:#0F2238;margin:56px 0 24px">البرنامج اليومي</h2>
+<div style="display:flex;flex-direction:column;gap:0;border-top:1px solid #D9CFB8">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="4">
+<div style="display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #D9CFB8">
+<div style="flex:0 0 88px;font-family:Amiri,serif;font-size:22px;color:#6B5420">{{d.label}}</div>
+<div style="flex:1;min-width:0"><div style="font-family:Amiri,serif;font-size:24px;color:#0F2238;margin-bottom:6px">{{d.title}}</div><div style="font-size:15px;line-height:1.9;color:#3B4452">[ تفاصيل اليوم: الأنشطة، الوجبات، التنقل ]</div></div>
+</div>
+</sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:56px">
+<div style="background:#FFFFFF;border:1px solid #E2D9C4;padding:28px"><div style="font-family:Amiri,serif;font-size:26px;color:#0F2238;margin-bottom:12px">يشمل البرنامج</div><div style="font-size:15px;line-height:2;color:#3B4452">[ بند ]<br>[ بند ]<br>[ بند ]</div></div>
+<div style="background:#FFFFFF;border:1px solid #E2D9C4;padding:28px"><div style="font-family:Amiri,serif;font-size:26px;color:#0F2238;margin-bottom:12px">لا يشمل</div><div style="font-size:15px;line-height:2;color:#3B4452">[ بند ]<br>[ بند ]<br>[ بند ]</div></div>
+</div>
+
+<!-- Agency section -->
+<div style="margin-top:56px;background:#0F2238;color:#F6F1E7;padding:36px">
+<div style="color:#C9A25E;font-size:14px;margin-bottom:8px">للوكالات</div>
+<div style="font-family:Amiri,serif;font-size:30px;margin-bottom:12px">تبيع هذا البرنامج لعملائك؟</div>
+<p style="font-size:15px;line-height:1.9;color:#C3CCD8;margin:0">[ ملاحظات تشغيلية للوكالات: السعة، المواعيد، شروط التعاقد ]</p>
+</div>
+</div>
+
+<!-- Sticky-style side card (no price) -->
+<div style="flex:1 1 320px;min-width:0;background:#FFFFFF;border:1px solid #E2D9C4;padding:32px">
+<div style="font-family:Amiri,serif;font-size:28px;color:#0F2238;margin-bottom:8px">اسأل عن هذا البرنامج</div>
+<p style="font-size:15px;line-height:1.8;color:#4A5563;margin:0 0 24px">رسالة جاهزة بعنوان البرنامج تصلنا على واتساب.</p>
+<a href="#" style="display:flex;align-items:center;justify-content:center;background:#0F2238;color:#F6F1E7;font-weight:600;min-height:52px;margin-bottom:12px">أنا مسافر · واتساب</a>
+<a href="#" style="display:flex;align-items:center;justify-content:center;border:1px solid #0F2238;color:#0F2238;font-weight:600;min-height:52px">أنا وكالة · واتساب</a>
+<div style="border-top:1px solid #E2D9C4;margin-top:28px;padding-top:20px;font-size:14px;line-height:2;color:#3B4452">المدة: [X] أيام<br>الوجهة: [الدولة]<br>المدن: [مدينة] · [مدينة]</div>
+</div>
+</div>
+
+<!-- Related -->
+<div style="max-width:1280px;margin:0 auto;padding:24px 40px 96px">
+<h2 style="font-family:Amiri,serif;font-size:38px;color:#0F2238;margin:0 0 28px">برامج مشابهة</h2>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px">
+<sc-for list="{{related}}" as="r" hint-placeholder-count="3">
+<a href="Program.dc.html" style="display:block;background:#FFFFFF;border:1px solid #E2D9C4"><div style="height:200px;background:#CFC6B2"></div><div style="padding:20px"><div style="font-size:13px;color:#6B5420">{{r}}</div><div style="font-family:Amiri,serif;font-size:24px;color:#0F2238;margin-top:6px">[عنوان البرنامج]</div></div></a>
+</sc-for>
+</div>
+</div>
+
+<div style="background:#091726;color:#B7C0CC"><div style="max-width:1280px;margin:0 auto;padding:40px;font-size:14px;line-height:2">سكاي كي للسياحة · تركيا · ألبانيا · الجبل الأسود · بولندا</div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {
+days:[{label:'اليوم 1',title:'[عنوان اليوم]'},{label:'اليوم 2',title:'[عنوان اليوم]'},{label:'اليوم 3',title:'[عنوان اليوم]'},{label:'اليوم 4',title:'[عنوان اليوم]'}],
+related:['تركيا · [X] أيام','تركيا · [X] أيام','البلقان · [X] أيام']
+};
+}
+}
+</script>
+</body>
+</html>

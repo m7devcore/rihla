@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>صفحة الوجهة — سكاي كي للسياحة</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+</style>
+</helmet>
+<div dir="rtl" style="font-family:'IBM Plex Sans Arabic',sans-serif;background:#F6F1E7;color:#1B2430;width:100%;overflow:hidden">
+
+<div style="background:#0F2238;color:#F6F1E7">
+<div style="max-width:1280px;margin:0 auto;padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+<a href="Main.dc.html" style="font-family:Amiri,serif;font-size:28px;font-weight:700">سكاي كي <span style="color:#C9A25E">للسياحة</span></a>
+<div style="display:flex;flex-wrap:wrap;gap:28px;font-size:15px"><a href="#">الوجهات</a><a href="Program.dc.html">البرامج</a><a href="#">للشركات والوكالات</a><a href="#">من نحن</a><a href="#">تواصل معنا</a></div>
+<a href="#" style="border:1px solid #C9A25E;padding:10px 18px;color:#C9A25E;min-height:44px;box-sizing:border-box;display:flex;align-items:center;font-size:14px">English</a>
+</div>
+</div>
+
+<!-- Country hero -->
+<div style="background:#0F2238;color:#F6F1E7">
+<div style="max-width:1280px;margin:0 auto;padding:24px 40px 80px;display:flex;flex-wrap:wrap;gap:48px;align-items:center">
+<div style="flex:1 1 440px;min-width:0">
+<div style="font-size:14px;color:#C3CCD8;margin-bottom:24px"><a href="Main.dc.html">الرئيسية</a> / الوجهات / تركيا</div>
+<span style="display:inline-block;background:#C9A25E;color:#0F2238;font-size:13px;font-weight:600;padding:6px 12px;margin-bottom:20px">مكتب رسمي</span>
+<h1 style="font-family:Amiri,serif;font-size:72px;line-height:1.2;margin:0 0 16px">تركيا</h1>
+<p style="font-size:18px;line-height:1.9;color:#D6DCE4;margin:0 0 32px;max-width:520px">[ نبذة عن الوجهة وما يميز عملنا فيها، سطران ]</p>
+<div style="display:flex;flex-wrap:wrap;gap:16px"><a href="#" style="background:#C9A25E;color:#0F2238;font-weight:600;padding:14px 28px;min-height:44px;box-sizing:border-box">تواصل عن هذه الوجهة</a></div>
+</div>
+<div style="flex:1 1 420px;min-width:0;height:440px;background:#1D3552;border:1px solid #C9A25E;display:flex;align-items:flex-end;padding:20px;box-sizing:border-box;font-size:14px;color:#C9A25E">[ صورة الوجهة ]</div>
+</div>
+</div>
+
+<!-- Cities -->
+<div style="max-width:1280px;margin:0 auto;padding:80px 40px 24px">
+<div style="margin-bottom:32px"><div style="color:#8A6A2C;font-size:14px;margin-bottom:8px">المدن</div><h2 style="font-family:Amiri,serif;font-size:44px;margin:0;color:#0F2238">مدن نغطيها في تركيا</h2></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<sc-for list="{{cities}}" as="c" hint-placeholder-count="4">
+<a href="#" style="display:block"><div style="height:200px;background:#CFC6B2;display:flex;align-items:flex-end;padding:12px;box-sizing:border-box;font-size:13px;color:#3B4452">[ صورة ]</div><div style="font-family:Amiri,serif;font-size:26px;color:#0F2238;padding-top:12px">{{c}}</div></a>
+</sc-for>
+</div>
+</div>
+
+<!-- Programs with filters -->
+<div style="max-width:1280px;margin:0 auto;padding:64px 40px">
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:32px">
+<h2 style="font-family:Amiri,serif;font-size:44px;margin:0;color:#0F2238">برامج تركيا</h2>
+<div style="display:flex;flex-wrap:wrap;gap:10px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+<button onClick="{{f.pick}}" style="font-family:inherit;font-size:14px;min-height:44px;padding:0 20px;cursor:pointer;border:1px solid #0F2238;background:{{f.bg}};color:{{f.fg}}">{{f.label}}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px">
+<sc-for list="{{programs}}" as="p" hint-placeholder-count="3">
+<a href="Program.dc.html" style="display:block;background:#FFFFFF;border:1px solid #E2D9C4">
+<div style="height:220px;background:#CFC6B2;padding:16px;box-sizing:border-box"><span style="background:#C9A25E;color:#0F2238;font-size:13px;font-weight:600;padding:6px 12px">{{p.badge}}</span></div>
+<div style="padding:24px"><div style="font-size:13px;color:#6B5420;margin-bottom:8px">{{p.meta}}</div><div style="font-family:Amiri,serif;font-size:26px;color:#0F2238">[عنوان البرنامج]</div></div>
+</a>
+</sc-for>
+</div>
+</div>
+
+<!-- Hotels -->
+<div style="background:#EDE5D3">
+<div style="max-width:1280px;margin:0 auto;padding:80px 40px">
+<h2 style="font-family:Amiri,serif;font-size:44px;margin:0 0 32px;color:#0F2238">فنادق نتعامل معها</h2>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<sc-for list="{{hotels}}" as="h" hint-placeholder-count="4">
+<div style="background:#FFFFFF;border:1px solid #E2D9C4"><div style="height:150px;background:#CFC6B2"></div><div style="padding:18px"><div style="font-family:Amiri,serif;font-size:22px;color:#0F2238">[اسم الفندق]</div><div style="font-size:13px;color:#4A5563;margin-top:6px">{{h}}</div></div></div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div style="background:#0F2238;color:#F6F1E7;text-align:center"><div style="max-width:880px;margin:0 auto;padding:80px 40px">
+<h2 style="font-family:Amiri,serif;font-size:44px;line-height:1.4;margin:0 0 28px">تخطط لرحلة إلى تركيا؟</h2>
+<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center"><a href="#" style="background:#C9A25E;color:#0F2238;font-weight:600;padding:16px 32px;min-height:44px;box-sizing:border-box">تواصل كمسافر</a><a href="#" style="border:1px solid #C9A25E;padding:16px 32px;min-height:44px;box-sizing:border-box">تواصل كوكالة</a></div>
+</div></div>
+
+<div style="background:#091726;color:#B7C0CC"><div style="max-width:1280px;margin:0 auto;padding:40px;font-size:14px;line-height:2">سكاي كي للسياحة · تركيا · ألبانيا · الجبل الأسود · بولندا</div></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
+class Component extends DCLogic {
+constructor(props){ super(props); this.state = { f: 'all' }; }
+renderVals() {
+const labels = [['all','الكل'],['family','عائلات'],['honeymoon','شهر عسل'],['groups','مجموعات']];
+return {
+cities:['إسطنبول','طرابزون','بورصة','كابادوكيا'],
+filters: labels.map(([id,label]) => ({ label, bg: this.state.f===id ? '#0F2238' : 'transparent', fg: this.state.f===id ? '#F6F1E7' : '#0F2238', pick: () => this.setState({ f: id }) })),
+programs:[{badge:'اختيار الفريق',meta:'[X] أيام'},{badge:'الأكثر طلباً',meta:'[X] أيام'},{badge:'جديد',meta:'[X] أيام'}],
+hotels:['إسطنبول · 5 نجوم','طرابزون · 4 نجوم','بورصة · منتجع','كابادوكيا · فندق كهفي']
+};
+}
+}
+</script>
+</body>
+</html>

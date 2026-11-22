@@ -1,0 +1,56 @@
+name: Task
+description: A task from docs/PLAN.md
+title: "<ID> <short name>"
+labels: []
+body:
+  - type: input
+    id: task_id
+    attributes:
+      label: Plan task ID
+      description: The ID in docs/PLAN.md, for example 2.2
+    validations:
+      required: true
+  - type: dropdown
+    id: owner
+    attributes:
+      label: Accountable owner
+      options:
+        - Mahmoud
+        - Stefano
+        - Mahmoud + Stefano
+    validations:
+      required: true
+  - type: input
+    id: due
+    attributes:
+      label: Due date
+      placeholder: "2026-12-04"
+    validations:
+      required: true
+  - type: input
+    id: hours
+    attributes:
+      label: Estimated hours
+    validations:
+      required: false
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs to be done
+      description: One short paragraph. Link designs, earlier PRs or files.
+    validations:
+      required: true
+  - type: textarea
+    id: done_when
+    attributes:
+      label: Done when
+      description: Copy the criterion from docs/PLAN.md. Add checks if the task needs more. Each item must be something a reviewer can verify.
+    validations:
+      required: true
+  - type: textarea
+    id: blocked_by
+    attributes:
+      label: Blocked by
+      description: Issues or decisions this task waits for. Write "nothing" if none.
+    validations:
+      required: false

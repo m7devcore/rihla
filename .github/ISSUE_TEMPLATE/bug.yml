@@ -1,0 +1,39 @@
+name: Bug
+description: Something on the site or in the admin panel does not work
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The page address, the language, and what you clicked.
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: "iPhone 14, Safari"
+    validations:
+      required: false
+  - type: dropdown
+    id: blocker
+    attributes:
+      label: Must this be fixed before launch?
+      options:
+        - "Yes (launch-blocker)"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: Please attach a screenshot. Do not paste passwords, keys or private company content.
