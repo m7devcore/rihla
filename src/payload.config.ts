@@ -10,6 +10,16 @@ import { r2Storage } from '@payloadcms/storage-r2'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Countries } from './collections/Countries'
+import { Cities } from './collections/Cities'
+import { Hotels } from './collections/Hotels'
+import { Programs } from './collections/Programs'
+import { Articles } from './collections/Articles'
+import { Albums } from './collections/Albums'
+import { Partners } from './collections/Partners'
+import { Testimonials } from './collections/Testimonials'
+import { Redirects } from './collections/Redirects'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -50,7 +60,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Countries, Cities, Hotels, Programs, Articles, Albums, Partners, Testimonials, Redirects],
+  globals: [SiteSettings],
+  localization: {
+    locales: [
+      { label: 'العربية', code: 'ar' },
+      { label: 'English', code: 'en' },
+    ],
+    defaultLocale: 'ar',
+    fallback: true,
+  },
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

@@ -32,3 +32,4 @@ Thumbs.db
 # Editors
 .vscode/
 .idea/
+*.tsbuildinfo

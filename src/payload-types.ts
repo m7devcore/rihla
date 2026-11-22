@@ -139,6 +139,39 @@ export type SupportedTimezones =
   | 'Pacific/Fiji';
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LexicalNodes_BD9A5CBB".
+ */
+export type LexicalNodes_BD9A5CBB =
+  | SerializedTextNode
+  | SerializedTabNode
+  | SerializedLineBreakNode
+  | SerializedParagraphNode<LexicalNodes_BD9A5CBB>
+  | SerializedHorizontalRuleNode
+  | SerializedUploadNode<'media'>
+  | SerializedQuoteNode<LexicalNodes_BD9A5CBB>
+  | SerializedRelationshipNode<
+      | 'users'
+      | 'countries'
+      | 'cities'
+      | 'hotels'
+      | 'programs'
+      | 'articles'
+      | 'albums'
+      | 'partners'
+      | 'testimonials'
+      | 'redirects'
+      | 'payload-kv'
+      | 'payload-locked-documents'
+      | 'payload-preferences'
+      | 'payload-migrations'
+    >
+  | SerializedAutoLinkNode<LexicalNodes_BD9A5CBB, LexicalLinkFields>
+  | SerializedLinkNode<LexicalNodes_BD9A5CBB, LexicalLinkFields>
+  | SerializedListNode<LexicalNodes_BD9A5CBB>
+  | SerializedListItemNode<LexicalNodes_BD9A5CBB>
+  | SerializedHeadingNode<LexicalNodes_BD9A5CBB>;
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "LexicalNodes_3DE324E4".
  */
 export type LexicalNodes_3DE324E4 =
@@ -158,6 +191,15 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    countries: Country;
+    cities: City;
+    hotels: Hotel;
+    programs: Program;
+    articles: Article;
+    albums: Album;
+    partners: Partner;
+    testimonials: Testimonial;
+    redirects: Redirect;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -168,6 +210,15 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    countries: CountriesSelect<false> | CountriesSelect<true>;
+    cities: CitiesSelect<false> | CitiesSelect<true>;
+    hotels: HotelsSelect<false> | HotelsSelect<true>;
+    programs: ProgramsSelect<false> | ProgramsSelect<true>;
+    articles: ArticlesSelect<false> | ArticlesSelect<true>;
+    albums: AlbumsSelect<false> | AlbumsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -177,10 +228,14 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
-  locale: null;
+  fallbackLocale: ('false' | 'none' | 'null') | false | null | ('ar' | 'en') | ('ar' | 'en')[];
+  globals: {
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
+  locale: 'ar' | 'en';
   widgets: {
     welcome: WelcomeWidget;
     collections: CollectionsWidget;
@@ -301,6 +356,287 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "countries".
+ */
+export interface Country {
+  id: number;
+  name: string;
+  /**
+   * Lowercase, hyphens only. Used in the page URL.
+   */
+  slug: string;
+  summary?: string | null;
+  /**
+   * Official office (checked) or coverage only (unchecked).
+   */
+  hasOfficialOffice?: boolean | null;
+  cover: number | Media;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cities".
+ */
+export interface City {
+  id: number;
+  name: string;
+  /**
+   * Lowercase, hyphens only. Used in the page URL.
+   */
+  slug: string;
+  country: number | Country;
+  /**
+   * Show a standalone page for this city.
+   */
+  hasPage?: boolean | null;
+  cover: number | Media;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hotels".
+ */
+export interface Hotel {
+  id: number;
+  name: string;
+  city: number | City;
+  stars: '3' | '4' | '5';
+  type: 'hotel' | 'resort' | 'apartment' | 'boutique';
+  amenities?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  familyFriendly?: boolean | null;
+  cover: number | Media;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs".
+ */
+export interface Program {
+  id: number;
+  title: string;
+  /**
+   * Lowercase, hyphens only. Used in the page URL.
+   */
+  slug: string;
+  summary?: string | null;
+  durationDays: number;
+  country: number | Country;
+  cities?: (number | City)[] | null;
+  badge?: ('staff-pick' | 'popular' | 'new') | null;
+  featured?: boolean | null;
+  /**
+   * Lower numbers appear first.
+   */
+  order?: number | null;
+  cover: number | Media;
+  gallery?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  days?:
+    | {
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  included?:
+    | {
+        item: string;
+        id?: string | null;
+      }[]
+    | null;
+  excluded?:
+    | {
+        item: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Shown to travel agencies on the program page.
+   */
+  agencyNotes?: string | null;
+  /**
+   * Only displayed on the site when "Prices enabled" is on in Site Settings.
+   */
+  price?: {
+    from?: number | null;
+    currency?: string | null;
+  };
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles".
+ */
+export interface Article {
+  id: number;
+  title: string;
+  /**
+   * Lowercase, hyphens only. Used in the page URL.
+   */
+  slug: string;
+  excerpt?: string | null;
+  tag?: string | null;
+  cover: number | Media;
+  content?: LexicalRichText<LexicalNodes_BD9A5CBB> | null;
+  publishedAt: string;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "albums".
+ */
+export interface Album {
+  id: number;
+  title: string;
+  cover: number | Media;
+  images?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  name: string;
+  logo: number | Media;
+  url?: string | null;
+  order?: number | null;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  author: string;
+  text: string;
+  /**
+   * e.g. Instagram, Google
+   */
+  platform?: string | null;
+  /**
+   * Link to the original post/review.
+   */
+  sourceUrl?: string | null;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects".
+ */
+export interface Redirect {
+  id: number;
+  /**
+   * Old path, e.g. /old-page
+   */
+  from: string;
+  /**
+   * New path or full URL.
+   */
+  to: string;
+  type?: ('301' | '302') | null;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -330,6 +666,42 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'countries';
+        value: number | Country;
+      } | null)
+    | ({
+        relationTo: 'cities';
+        value: number | City;
+      } | null)
+    | ({
+        relationTo: 'hotels';
+        value: number | Hotel;
+      } | null)
+    | ({
+        relationTo: 'programs';
+        value: number | Program;
+      } | null)
+    | ({
+        relationTo: 'articles';
+        value: number | Article;
+      } | null)
+    | ({
+        relationTo: 'albums';
+        value: number | Album;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: number | Partner;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'redirects';
+        value: number | Redirect;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -462,6 +834,187 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "countries_select".
+ */
+export interface CountriesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  summary?: T;
+  hasOfficialOffice?: T;
+  cover?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cities_select".
+ */
+export interface CitiesSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  country?: T;
+  hasPage?: T;
+  cover?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hotels_select".
+ */
+export interface HotelsSelect<T extends boolean = true> {
+  name?: T;
+  city?: T;
+  stars?: T;
+  type?: T;
+  amenities?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  familyFriendly?: T;
+  cover?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs_select".
+ */
+export interface ProgramsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  summary?: T;
+  durationDays?: T;
+  country?: T;
+  cities?: T;
+  badge?: T;
+  featured?: T;
+  order?: T;
+  cover?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  days?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  included?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  excluded?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  agencyNotes?: T;
+  price?:
+    | T
+    | {
+        from?: T;
+        currency?: T;
+      };
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "articles_select".
+ */
+export interface ArticlesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  tag?: T;
+  cover?: T;
+  content?: T;
+  publishedAt?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "albums_select".
+ */
+export interface AlbumsSelect<T extends boolean = true> {
+  title?: T;
+  cover?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  url?: T;
+  order?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  author?: T;
+  text?: T;
+  platform?: T;
+  sourceUrl?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects_select".
+ */
+export interface RedirectsSelect<T extends boolean = true> {
+  from?: T;
+  to?: T;
+  type?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -518,6 +1071,90 @@ export interface PayloadLlmInstructionsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  brandName: string;
+  /**
+   * Digits only, with country code.
+   */
+  whatsappTraveller: string;
+  /**
+   * Digits only, with country code.
+   */
+  whatsappAgency: string;
+  /**
+   * Optional second number.
+   */
+  whatsappSecond?: string | null;
+  social?:
+    | {
+        platform: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  offices?:
+    | {
+        country: string;
+        city: string;
+        address?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  metaPixelId?: string | null;
+  ga4Id?: string | null;
+  /**
+   * When off, prices are hidden everywhere on the site.
+   */
+  pricesEnabled?: boolean | null;
+  createdBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedBy?: {
+    relationTo: 'users';
+    value: number | User;
+  } | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  brandName?: T;
+  whatsappTraveller?: T;
+  whatsappAgency?: T;
+  whatsappSecond?: T;
+  social?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
+  offices?:
+    | T
+    | {
+        country?: T;
+        city?: T;
+        address?: T;
+        id?: T;
+      };
+  metaPixelId?: T;
+  ga4Id?: T;
+  pricesEnabled?: T;
+  createdBy?: T;
+  updatedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "welcome_widget".
  */
 export interface WelcomeWidget {
@@ -543,7 +1180,18 @@ export interface CollectionsWidget {
 export interface CollectionQueryWidget {
   data?: {
     title?: string | null;
-    relatedCollection: 'users' | 'media';
+    relatedCollection:
+      | 'users'
+      | 'media'
+      | 'countries'
+      | 'cities'
+      | 'hotels'
+      | 'programs'
+      | 'articles'
+      | 'albums'
+      | 'partners'
+      | 'testimonials'
+      | 'redirects';
     where?:
       | {
           [k: string]: unknown;
@@ -565,7 +1213,21 @@ export interface CollectionQueryWidget {
  */
 export interface ActivityWidget {
   data?: {
-    excludedCollections?: ('users' | 'media')[] | null;
+    excludedCollections?:
+      | (
+          | 'users'
+          | 'media'
+          | 'countries'
+          | 'cities'
+          | 'hotels'
+          | 'programs'
+          | 'articles'
+          | 'albums'
+          | 'partners'
+          | 'testimonials'
+          | 'redirects'
+        )[]
+      | null;
   };
   width: 'small' | 'medium' | 'large' | 'x-large' | 'full';
 }
@@ -636,6 +1298,62 @@ export interface SerializedParagraphNode<TChildren> extends SerializedLexicalEle
   type: 'paragraph';
   textFormat: number;
   textStyle: string;
+}
+
+export interface SerializedHorizontalRuleNode {
+  type: 'horizontalrule';
+  /** @deprecated Ignored when loading. Typed as required only to match Lexical's types: rich text sent through the API, CLI or MCP may not contain it. */
+  version: number;
+}
+
+export type SerializedUploadNode<TSlugs extends keyof Config['collections'], TFields = { [k: string]: unknown }> = {
+  type: 'upload';
+  format: LexicalElementFormat;
+  id: string;
+  /** @deprecated Ignored when loading. Typed as required only to match Lexical's types: rich text sent through the API, CLI or MCP may not contain it. */
+  version: number;
+  fields: TFields;
+} & {
+  [TSlug in TSlugs]: {
+    relationTo: TSlug;
+    value: Config['collections'][TSlug]['id'] | Config['collections'][TSlug];
+  };
+}[TSlugs];
+
+export interface SerializedQuoteNode<TChildren> extends SerializedLexicalElementBase<TChildren> {
+  type: 'quote';
+}
+
+export type SerializedRelationshipNode<TSlugs extends keyof Config['collections']> = {
+  type: 'relationship';
+  format: LexicalElementFormat;
+  /** @deprecated Ignored when loading. Typed as required only to match Lexical's types: rich text sent through the API, CLI or MCP may not contain it. */
+  version: number;
+} & {
+  [TSlug in TSlugs]: {
+    relationTo: TSlug;
+    value: Config['collections'][TSlug]['id'] | Config['collections'][TSlug];
+  };
+}[TSlugs];
+
+export interface LexicalLinkFields {
+  [k: string]: unknown;
+  doc?: {
+    relationTo: string;
+    value: Config['db']['defaultIDType'] | { [k: string]: unknown; id: Config['db']['defaultIDType'] };
+  } | null;
+  linkType: 'custom' | 'internal';
+  newTab: boolean;
+  url?: string;
+}
+export interface SerializedLinkNode<TChildren, TFields = LexicalLinkFields> extends SerializedLexicalElementBase<TChildren> {
+  type: 'link';
+  fields: TFields;
+  id?: string;
+}
+export interface SerializedAutoLinkNode<TChildren, TFields = LexicalLinkFields> extends SerializedLexicalElementBase<TChildren> {
+  type: 'autolink';
+  fields: TFields;
 }
 
 export interface SerializedListNode<TChildren> extends SerializedLexicalElementBase<TChildren> {
