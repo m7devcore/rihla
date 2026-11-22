@@ -4,17 +4,18 @@ import { coverField } from './fields'
 
 export const Albums: CollectionConfig = {
   slug: 'albums',
-  admin: { useAsTitle: 'title' },
+  labels: { singular: { ar: 'ألبوم', en: 'Album' }, plural: { ar: 'الألبومات', en: 'Albums' } },
+  admin: { group: { ar: 'المحتوى', en: 'Content' }, useAsTitle: 'title' },
   access: { read: publicRead, create: authenticated, update: authenticated, delete: authenticated },
   fields: [
-    { name: 'title', type: 'text', required: true, localized: true },
+    { name: 'title', label: { ar: 'العنوان', en: 'Title' }, type: 'text', required: true, localized: true },
     coverField,
     {
-      name: 'images',
+      name: 'images', label: { ar: 'الصور', en: 'Images' },
       type: 'array',
       fields: [
-        { name: 'image', type: 'upload', relationTo: 'media', required: true },
-        { name: 'caption', type: 'text', localized: true },
+        { name: 'image', label: { ar: 'الصورة', en: 'Image' }, type: 'upload', relationTo: 'media', required: true },
+        { name: 'caption', label: { ar: 'التعليق', en: 'Caption' }, type: 'text', localized: true },
       ],
     },
   ],

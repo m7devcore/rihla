@@ -4,17 +4,18 @@ import { coverField, slugField } from './fields'
 
 export const Cities: CollectionConfig = {
   slug: 'cities',
-  admin: { useAsTitle: 'name', defaultColumns: ['name', 'country', 'hasPage'] },
+  labels: { singular: { ar: 'مدينة', en: 'City' }, plural: { ar: 'المدن', en: 'Cities' } },
+  admin: { group: { ar: 'الوجهات', en: 'Destinations' }, useAsTitle: 'name', defaultColumns: ['name', 'country', 'hasPage'] },
   access: { read: publicRead, create: authenticated, update: authenticated, delete: authenticated },
   fields: [
-    { name: 'name', type: 'text', required: true, localized: true },
+    { name: 'name', label: { ar: 'الاسم', en: 'Name' }, type: 'text', required: true, localized: true },
     slugField,
-    { name: 'country', type: 'relationship', relationTo: 'countries', required: true },
+    { name: 'country', label: { ar: 'الدولة', en: 'Country' }, type: 'relationship', relationTo: 'countries', required: true },
     {
-      name: 'hasPage',
+      name: 'hasPage', label: { ar: 'صفحة مستقلة', en: 'Standalone page' },
       type: 'checkbox',
       defaultValue: false,
-      admin: { description: 'Show a standalone page for this city.' },
+      admin: { description: { ar: 'إظهار صفحة مستقلة لهذه المدينة.', en: 'Show a standalone page for this city.' } },
     },
     coverField,
   ],

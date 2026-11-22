@@ -4,17 +4,18 @@ import { coverField, slugField } from './fields'
 
 export const Countries: CollectionConfig = {
   slug: 'countries',
-  admin: { useAsTitle: 'name', defaultColumns: ['name', 'hasOfficialOffice'] },
+  labels: { singular: { ar: 'دولة', en: 'Country' }, plural: { ar: 'الدول', en: 'Countries' } },
+  admin: { group: { ar: 'الوجهات', en: 'Destinations' }, useAsTitle: 'name', defaultColumns: ['name', 'hasOfficialOffice'] },
   access: { read: publicRead, create: authenticated, update: authenticated, delete: authenticated },
   fields: [
-    { name: 'name', type: 'text', required: true, localized: true },
+    { name: 'name', label: { ar: 'الاسم', en: 'Name' }, type: 'text', required: true, localized: true },
     slugField,
-    { name: 'summary', type: 'textarea', localized: true },
+    { name: 'summary', label: { ar: 'نبذة', en: 'Summary' }, type: 'textarea', localized: true },
     {
-      name: 'hasOfficialOffice',
+      name: 'hasOfficialOffice', label: { ar: 'مكتب رسمي', en: 'Official office' },
       type: 'checkbox',
       defaultValue: false,
-      admin: { description: 'Official office (checked) or coverage only (unchecked).' },
+      admin: { description: { ar: 'مكتب رسمي (مفعّل) أو تغطية فقط (غير مفعّل).', en: 'Official office (checked) or coverage only (unchecked).' } },
     },
     coverField,
   ],

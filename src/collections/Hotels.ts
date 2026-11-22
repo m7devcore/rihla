@@ -4,13 +4,14 @@ import { coverField } from './fields'
 
 export const Hotels: CollectionConfig = {
   slug: 'hotels',
-  admin: { useAsTitle: 'name', defaultColumns: ['name', 'city', 'stars', 'type'] },
+  labels: { singular: { ar: 'فندق', en: 'Hotel' }, plural: { ar: 'الفنادق', en: 'Hotels' } },
+  admin: { group: { ar: 'الوجهات', en: 'Destinations' }, useAsTitle: 'name', defaultColumns: ['name', 'city', 'stars', 'type'] },
   access: { read: publicRead, create: authenticated, update: authenticated, delete: authenticated },
   fields: [
-    { name: 'name', type: 'text', required: true, localized: true },
-    { name: 'city', type: 'relationship', relationTo: 'cities', required: true },
+    { name: 'name', label: { ar: 'الاسم', en: 'Name' }, type: 'text', required: true, localized: true },
+    { name: 'city', label: { ar: 'المدينة', en: 'City' }, type: 'relationship', relationTo: 'cities', required: true },
     {
-      name: 'stars',
+      name: 'stars', label: { ar: 'النجوم', en: 'Stars' },
       type: 'select',
       required: true,
       options: [
@@ -20,7 +21,7 @@ export const Hotels: CollectionConfig = {
       ],
     },
     {
-      name: 'type',
+      name: 'type', label: { ar: 'النوع', en: 'Type' },
       type: 'select',
       required: true,
       defaultValue: 'hotel',
@@ -32,11 +33,11 @@ export const Hotels: CollectionConfig = {
       ],
     },
     {
-      name: 'amenities',
+      name: 'amenities', label: { ar: 'المرافق', en: 'Amenities' },
       type: 'array',
-      fields: [{ name: 'label', type: 'text', required: true, localized: true }],
+      fields: [{ name: 'label', label: { ar: 'الاسم', en: 'Label' }, type: 'text', required: true, localized: true }],
     },
-    { name: 'familyFriendly', type: 'checkbox', defaultValue: false },
+    { name: 'familyFriendly', label: { ar: 'مناسب للعائلات', en: 'Family friendly' }, type: 'checkbox', defaultValue: false },
     coverField,
   ],
 }
