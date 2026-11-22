@@ -31,7 +31,30 @@ It is built for B2B first (partner agencies and corporate clients), with B2C (in
 
 ## Getting started
 
-Setup instructions will be added once the first version of the codebase lands.
+Requires Node `^24.22.3 || >=26.13.1` and pnpm 11 (not 12).
+
+```bash
+cp .env.example .env   # then fill in the two required values below
+pnpm install
+pnpm dev               # site at http://localhost:3000, admin at /admin
+```
+
+Required values in `.env` for local development:
+
+- `PAYLOAD_SECRET`: any long random string. Never commit `.env`.
+- `NEXT_PUBLIC_SITE_URL`: `http://localhost:3000`
+
+The Meta Pixel and GA4 IDs are optional and can stay empty. Before opening a pull request, run `pnpm verify`.
+
+The scaffold is based on Payload's official Cloudflare D1 template, which currently targets Payload 4 (beta).
+
+## Project structure
+
+- `src/contract/types.ts`: shared types between backend and frontend (change by agreement only)
+- `src/lib/data/`: data layer; the frontend imports only from here. Currently returns mock data from `src/lib/data/mocks/`; the backend replaces the bodies with the Payload Local API
+- `src/collections/`: Payload collections (backend)
+- `src/app/(frontend)/`: public site (frontend)
+- `wrangler.jsonc`: Cloudflare Workers config (only needed when deploying; it holds the D1 database id)
 
 ## Project rules
 
@@ -54,23 +77,3 @@ How the project is run, for humans and AI agents:
 ## License
 
 [MIT](./LICENSE)
-
-## Project structure
-
-- `src/contract/types.ts` — shared types between backend and frontend (change by agreement only)
-- `src/lib/data/` — data layer; the frontend imports only from here. Currently returns mock data from `src/lib/data/mocks/`; the backend replaces the bodies with the Payload Local API
-- `src/collections/` — Payload collections (backend)
-- `src/app/(frontend)/` — public site (frontend)
-- `wrangler.jsonc` — Cloudflare Workers config (replace `DATABASE_ID` with your D1 database id)
-
-## Getting started
-
-Requires Node `^24.22.3 || >=26.13.1` and pnpm.
-
-```bash
-cp .env.example .env   # set PAYLOAD_SECRET
-pnpm install
-pnpm dev
-```
-
-Note: the scaffold is based on Payload's official Cloudflare D1 template, which currently targets Payload 4 (beta).

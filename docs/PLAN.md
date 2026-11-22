@@ -43,7 +43,7 @@ Done when: a staging site is live on Cloudflare, Stefano can log in to the admin
 | 1.5 | Show the designs to the company and collect feedback | Mahmoud + Stefano | 1 + 1 | 2026-11-26 | Written approval or a list of requested changes. |
 | 1.6 | Set up Stefano's computer: Node, pnpm, clone, run the site locally (with Mahmoud's help) | Stefano | 1 | 2026-11-24 | `pnpm dev` runs and the home page opens locally. |
 | 1.7 | Collect company content in a Drive folder outside the repository: countries and cities, programs, logos, photos | Stefano | 4 | 2026-11-29 | Folder `01_Client-Content` contains the agreed list, named and organised. |
-| 1.8 | First code task: add two programs in Arabic to the demo data (`src/lib/data/mocks`) through a pull request | Stefano | 1 | 2026-11-29 | PR merged. Both programs appear on the local site. |
+| 1.8 | First code task: add two demo programs with Arabic and English text to `src/lib/data/mocks` through a pull request. Starts after Mahmoud merges the bilingual demo-data change (mocks hold `{ ar, en }` text, the data functions return one string for the requested locale, like Payload will). | Stefano | 1 | 2026-11-29 | PR merged. A Vitest test shows `getPrograms('ar')` and `getPrograms('en')` return both new programs with Arabic and English titles. No page shows programs before 2.2, so the test is the evidence. |
 
 ## Phase 2: Build the pages (2026-11-30 to 2026-12-06)
 
