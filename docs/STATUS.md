@@ -29,6 +29,7 @@ Phase 1: Setup and foundations (2026-11-23 to 2026-11-29). See [`PLAN.md`](./PLA
 - The language switcher in the admin panel does not respond to clicks. Workaround: set the `payload-lng` cookie.
 - The repository is not deployed yet, so the deployment path (Payload 4 beta on Workers) is untested.
 - Local Node must meet the `engines` range or `pnpm` prints warnings.
+- Demo data in `src/lib/data/mocks` has English-only text. Task 1.8 waits for the bilingual demo-data change (see `PLAN.md`, row 1.8).
 
 ## Open questions
 
