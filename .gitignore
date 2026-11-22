@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+
+# Build output
+.next/
+.open-next/
+.wrangler/
+out/
+dist/
+
+# Local data
+*.sqlite
+*.db
+
+# Real client content and migration exports (never commit)
+seed/private/
+exports/
+
+# Logs and OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
