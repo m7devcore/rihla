@@ -46,3 +46,23 @@ Issues and pull requests are welcome once the first version is out. Until then, 
 ## License
 
 [MIT](./LICENSE)
+
+## Project structure
+
+- `src/contract/types.ts` — shared types between backend and frontend (change by agreement only)
+- `src/lib/data/` — data layer; the frontend imports only from here. Currently returns mock data from `src/lib/data/mocks/`; the backend replaces the bodies with the Payload Local API
+- `src/collections/` — Payload collections (backend)
+- `src/app/(frontend)/` — public site (frontend)
+- `wrangler.jsonc` — Cloudflare Workers config (replace `DATABASE_ID` with your D1 database id)
+
+## Getting started
+
+Requires Node `^24.22.3 || >=26.13.1` and pnpm.
+
+```bash
+cp .env.example .env   # set PAYLOAD_SECRET
+pnpm install
+pnpm dev
+```
+
+Note: the scaffold is based on Payload's official Cloudflare D1 template, which currently targets Payload 4 (beta).
