@@ -1,0 +1,6 @@
+
+/* RTL fix: popups are positioned with an inline `left` but also get `right: 0`,
+   which wins in RTL and pushes menus (e.g. the locale switcher) to the wrong side. */
+[dir='rtl'] .popup__content {
+  right: auto !important;
+}
