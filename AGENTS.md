@@ -81,3 +81,5 @@ Prefer a clear question over a confident guess. Never invent company facts (prog
 ## Reporting
 
 When you finish a session, update `docs/STATUS.md` (current phase, what is done, what is next, known problems) in your PR. Keep entries short and factual.
+
+After every task or status change, write a `Tracker update:` line in the issue and the PR, in the format given in [`docs/WORKFLOW.md`](./docs/WORKFLOW.md#the-tracker). Work through the issue's Sub-tasks checklist in order. If a sub-task fails twice, stop and ask (see "When to stop and ask a human").

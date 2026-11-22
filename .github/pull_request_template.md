@@ -27,6 +27,11 @@ Closes #<issue number>. Plan ID: <for example 2.2>
 - [ ] `src/contract/types.ts` unchanged, or this PR explains the change and Mahmoud approved it
 - [ ] Generated files (`payload-types.ts`, migrations) were generated, not hand-edited
 - [ ] `docs/STATUS.md` updated
+- [ ] The issue's sub-task boxes are ticked to match what was really done
+
+## Tracker update
+
+<!-- One line, copied into the issue too: Tracker update: <ID> -> <Not started | In progress | Blocked | Done>, <YYYY-MM-DD>, <link>, sub-tasks <n of m> -->
 
 ## Not verified
 

@@ -48,6 +48,14 @@ body:
     validations:
       required: true
   - type: textarea
+    id: subtasks
+    attributes:
+      label: Sub-tasks
+      description: A checklist of 4 to 7 small steps, each checkable on its own. Use "- [ ] step". An agent works through these in order and stops if one fails twice.
+      placeholder: "- [ ] First small step\n- [ ] Second small step"
+    validations:
+      required: true
+  - type: textarea
     id: blocked_by
     attributes:
       label: Blocked by
