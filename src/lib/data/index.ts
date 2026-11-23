@@ -2,17 +2,35 @@
 // Today it reads mocks; backend swaps the bodies for the Payload Local API without changing signatures.
 import type { Article, Country, City, Hotel, Locale, Program, ProgramFilters, SiteSettings } from '@/contract/types'
 import { articles, cities, countries, hotels, programs, settings } from './mocks'
+import type { ProgramSource } from './mocks'
+import { localize } from './localize'
 
-export async function getPrograms(_locale: Locale, filters: ProgramFilters = {}): Promise<Program[]> {
+// Turns a stored program into the contract shape for one locale, like Payload's Local API does.
+function toProgram(locale: Locale, p: ProgramSource): Program {
+  const { title, summary, days, included, excluded, agencyNotes, ...rest } = p
+  return {
+    ...rest,
+    title: localize(locale, title),
+    summary: localize(locale, summary),
+    days: localize(locale, days),
+    included: localize(locale, included),
+    excluded: localize(locale, excluded),
+    ...(agencyNotes ? { agencyNotes: localize(locale, agencyNotes) } : {}),
+  }
+}
+
+export async function getPrograms(locale: Locale, filters: ProgramFilters = {}): Promise<Program[]> {
   return programs
     .filter((p) => (filters.countrySlug ? p.countrySlug === filters.countrySlug : true))
     .filter((p) => (filters.citySlug ? p.citySlugs.includes(filters.citySlug) : true))
     .filter((p) => (filters.featuredOnly ? p.featured : true))
     .sort((a, b) => a.order - b.order)
+    .map((p) => toProgram(locale, p))
 }
 
-export async function getProgramBySlug(_locale: Locale, slug: string): Promise<Program | null> {
-  return programs.find((p) => p.slug === slug) ?? null
+export async function getProgramBySlug(locale: Locale, slug: string): Promise<Program | null> {
+  const p = programs.find((p) => p.slug === slug)
+  return p ? toProgram(locale, p) : null
 }
 
 export async function getCountries(_locale: Locale): Promise<Country[]> {
