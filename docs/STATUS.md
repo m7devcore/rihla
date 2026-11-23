@@ -2,7 +2,7 @@
 
 Updated at the end of every working session, in the same pull request as the work. Keep it short and factual.
 
-Last updated: 2026-11-22 (evening)
+Last updated: 2026-11-23
 
 ## Current phase
 
@@ -21,6 +21,7 @@ Phase 1: Setup and foundations (2026-11-23 to 2026-11-29). See [`PLAN.md`](./PLA
 - Branch protection ruleset `protect-main` is on (PR, `verify`, one code-owner approval); a direct push was tested and rejected
 - Stefano (`StefanoAshraf`) added as a collaborator
 - GitHub issues #2 to #31 created, one per plan task, each with a Sub-tasks checklist; labels `phase-1` to `phase-4`, `backend`, `frontend`, `content`, `blocked`, `launch-blocker`, `needs-decision` exist
+- Demo programs hold Arabic and English text; `getPrograms` and `getProgramBySlug` return one language per locale (task 1.8 can start)
 - Master Tracker spreadsheet created (Dashboard, Tasks, Setup log, Milestones, Company needs, Risks)
 
 ## Next
@@ -34,7 +35,7 @@ Phase 1: Setup and foundations (2026-11-23 to 2026-11-29). See [`PLAN.md`](./PLA
 - The language switcher in the admin panel does not respond to clicks. Workaround: set the `payload-lng` cookie.
 - The repository is not deployed yet, so the deployment path (Payload 4 beta on Workers) is untested.
 - Local Node must meet the `engines` range or `pnpm` prints warnings.
-- Demo data in `src/lib/data/mocks` has English-only text. Task 1.8 waits for the bilingual demo-data change (see `PLAN.md`, row 1.8).
+- Only the demo programs are bilingual so far. Countries, cities, hotels and articles in `src/lib/data/mocks` still have English-only text.
 
 ## Open questions
 
