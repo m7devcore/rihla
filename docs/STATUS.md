@@ -2,7 +2,7 @@
 
 Updated at the end of every working session, in the same pull request as the work. Keep it short and factual.
 
-Last updated: 2026-11-23
+Last updated: 2026-11-25
 
 ## Current phase
 
@@ -21,6 +21,7 @@ Phase 1: Setup and foundations (2026-11-23 to 2026-11-29). See [`PLAN.md`](./PLA
 - Branch protection ruleset `protect-main` is on (PR, `verify`, one code-owner approval); a direct push was tested and rejected
 - Stefano (`StefanoAshraf`) added as a collaborator
 - GitHub issues #2 to #31 created, one per plan task, each with a Sub-tasks checklist; labels `phase-1` to `phase-4`, `backend`, `frontend`, `content`, `blocked`, `launch-blocker`, `needs-decision` exist
+- Project skills copied to `.claude/skills/` (Cloudflare, frontend-design, TDD, debugging, verification, review) and a Skills section added to `AGENTS.md`
 - Demo programs hold Arabic and English text; `getPrograms` and `getProgramBySlug` return one language per locale (task 1.8 can start)
 - Master Tracker spreadsheet created (Dashboard, Tasks, Setup log, Milestones, Company needs, Risks)
 
