@@ -78,6 +78,38 @@ Stop, write down the question in the issue, and wait when:
 
 Prefer a clear question over a confident guess. Never invent company facts (programs, prices, addresses, partner names). Use clearly marked demo data instead.
 
+## Skills
+
+Skills are short instruction files for one kind of step. Project copies live in `.claude/skills/` (third-party, see `.claude/skills/THIRD_PARTY.md`). An agent that can load skills loads the one for a step **before** doing that step. An agent that cannot still follows this file. A skill never overrides the Hard rules above: if they disagree, this file wins, and a skill that suggests upgrading a pinned version, adding a dependency, or leaving the Definition of done is ignored for that point.
+
+In the repository:
+
+| When | Skill | Typical tasks |
+| --- | --- | --- |
+| Writing new logic (helpers, link builders, data functions). Write the failing test first. | `test-driven-development` | 1.3, 1.4, 1.8, 2.7, 3.x |
+| Anything fails: a test, a build, a bug. Read it before the first fix, and again before a second attempt. | `systematic-debugging` | all |
+| Before saying a task is done or opening a PR. Run the commands and paste the output. | `verification-before-completion` | all |
+| Before asking for review. The reviewer is a fresh session, not the author. | `requesting-code-review` | all |
+| Building or changing UI. The approved designs win; use this skill for pages with no approved design and never to restyle an approved one. Arabic and RTL first. | `frontend-design` | 1.3, 1.4, 2.1 to 2.4, 2.7, 3.2 |
+| Connecting the repository to Cloudflare, bindings, secrets, first deploy. | `cloudflare-app-bootstrap` | 1.1, 1.2 |
+| Running or changing `wrangler` commands and `wrangler.jsonc`. | `wrangler` | 1.1, 4.1, 4.8 |
+| Writing or reviewing Worker code and configuration. | `workers-best-practices` | 1.1, 3.1, 3.4 |
+| Running and debugging the site locally on the Workers runtime. | `workers-development` | 1.6, 3.1 |
+| Mobile performance and image checks. | `web-perf` | 4.2 |
+
+Not in the repository (licence or rights stop us copying them). Use them from your own Claude setup where you have them, and only where listed:
+
+| When | Skill |
+| --- | --- |
+| Before launch, a security scan of the repository and the diff. | `claude-security` (tasks 4.4 and 4.7) |
+| Before launch, an accessibility check of the approved pages. | `design:accessibility-review` (4.7) |
+| Checking a built page against its approved design, without changing the design. | `design:design-critique` |
+| Arabic and English type, line wrapping, punctuation. | `better-typography` |
+| Spacing, radius, shadows and motion details on approved pages. | `better-ui` |
+| New pages with no approved design (About, Partners, Contact) and nothing else. It sets a strict house style, so never use it on the three approved designs. | `design-taste-frontend` (3.2) |
+| Launch-day checklist. | `engineering:deploy-checklist` (4.8) |
+| Writing the pull request description from the template. | `pr` |
+
 ## Reporting
 
 When you finish a session, update `docs/STATUS.md` (current phase, what is done, what is next, known problems) in your PR. Keep entries short and factual.
