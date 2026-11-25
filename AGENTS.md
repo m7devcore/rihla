@@ -80,7 +80,7 @@ Prefer a clear question over a confident guess. Never invent company facts (prog
 
 ## Skills
 
-Skills are short instruction files for one kind of step. Project copies live in `.claude/skills/` (third-party, see `.claude/skills/THIRD_PARTY.md`). An agent that can load skills loads the one for a step **before** doing that step. An agent that cannot still follows this file. A skill never overrides the Hard rules above: if they disagree, this file wins, and a skill that suggests upgrading a pinned version, adding a dependency, or leaving the Definition of done is ignored for that point.
+Skills are short instruction files for one kind of step. Project copies live in `.claude/skills/` (third-party, see `.claude/skills/THIRD_PARTY.md`). An agent that can load skills loads the one for a step **before** doing that step. An agent that cannot load skills automatically opens `.claude/skills/<name>/SKILL.md` and reads it before the step. An agent that cannot do even that still follows this file. A skill never overrides the Hard rules above: if they disagree, this file wins, and a skill that suggests upgrading a pinned version, adding a dependency, or leaving the Definition of done is ignored for that point.
 
 In the repository:
 
