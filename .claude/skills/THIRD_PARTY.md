@@ -11,5 +11,5 @@ These skills were written by others and copied here unchanged so every coding ag
 Rules for this folder:
 
 - Do not edit these files to fit the project. Project rules go in `AGENTS.md`, which wins when a skill disagrees with it.
-- To update a skill, replace the whole folder from its source, update the version above, and say so in the pull request.
+- To update a skill, replace the whole folder from its source in both `.claude/skills/` and `skills/`, update the version above, and say so in the pull request.
 - Only add a skill whose licence allows redistribution, and add its licence text to `LICENSES/`. Skills with no licence or "all rights reserved" stay out of this repository. Use them from your own tools instead.
